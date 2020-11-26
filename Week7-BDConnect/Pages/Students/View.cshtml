@@ -1,0 +1,64 @@
+﻿@page
+@model Week7_BDConnect.Pages.Students.ViewModel
+@{
+}
+
+<h1>:: View Student Records</h1>
+<div>
+    <p>Select Level</p>
+    <form>
+        <select type="text" asp-for="Level" style="width: 50px;">
+            <option>ALL</option>
+            @foreach( var item in Model.LevelItems)
+            {
+                <option>@item</option>
+            }
+        </select>
+        <input type="submit" value="Filter"/>
+    </form>
+</div>
+<br/>
+
+<div>
+    <table class="table table-active">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentLName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentCourse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentYear)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentRec[0].StudentLevel)
+                </th>
+            </tr>
+        </thead>
+
+
+        @for (int i = 0; i < Model.StudentRec.Count; i++)
+        {
+    <tr>
+        <td>@Model.StudentRec[i].StudentID</td>
+        <td>@Model.StudentRec[i].StudentName</td>
+        <td>@Model.StudentRec[i].StudentLName</td>
+        <td>@Model.StudentRec[i].StudentCourse</td>
+        <td>@Model.StudentRec[i].StudentStatus</td>
+        <td>@Model.StudentRec[i].StudentYear</td>
+        <td>@Model.StudentRec[i].StudentLevel</td>
+    </tr>
+        }
+    </table>
+</div>
